@@ -117,6 +117,9 @@
 			                 \d+    # followed by one or more digits
 			               )?       # make exponent optional
 			             )?         # make decimal portion optional
+			             (?:
+			             	[mn]?s # optional timespan
+			             )?
 			           )</string>
 			<key>name</key>
 			<string>constant.numeric.hocon</string>

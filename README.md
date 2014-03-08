@@ -12,5 +12,6 @@ HOCON syntax highlighting for Sublime Text
 ## Highlighting
 
 - String literals (`"foo bar"`)
+- Durations (`10s`, `10ms`, `10ns`)
 - Variables (`${foo.var}`)
 - Keywords (`include`)
