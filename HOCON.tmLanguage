@@ -89,7 +89,7 @@
 		<key>constant</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:true|false|null)\b</string>
+			<string>[^-]\b(?:true|false|null|on|off)\b[^-]</string>
 			<key>name</key>
 			<string>constant.language.hocon</string>
 		</dict>
