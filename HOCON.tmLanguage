@@ -118,7 +118,7 @@
 			               )?       # make exponent optional
 			             )?         # make decimal portion optional
 			             (?:
-			             	[mn]?s # optional timespan
+			             	([mn]?s)|(m) # optional timespan
 			             )?
 			           )</string>
 			<key>name</key>
@@ -345,7 +345,7 @@
 					<key>match</key>
 					<string>(#).*$\n?</string>
 					<key>name</key>
-					<string>comment.line.double-slash.js</string>
+					<string>comment.line.pound.hocon</string>
 				</dict>
 			</array>
 		</dict>
