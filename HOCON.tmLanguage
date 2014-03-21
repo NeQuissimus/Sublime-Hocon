@@ -99,6 +99,7 @@
 			<string>handles integer and decimal numbers</string>
 			<key>match</key>
 			<string>(?x:         # turn on extended mode
+									 [^a-zA-Z]
 			             -?         # an optional minus
 			             (?:
 			               0        # a zero
@@ -117,9 +118,27 @@
 			                 \d+    # followed by one or more digits
 			               )?       # make exponent optional
 			             )?         # make decimal portion optional
+			             # Durations and byte-based sizes
 			             (?:
-			             	([mn]?s)|(m) # optional timespan
+			             	((nano|micro|milli)?second[s]?)
 			             )?
+			             (?:
+			             	((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)
+			             )?
+			             (?:
+			             	([num]?s)
+			             	|
+			             	(hour[s]?|h)
+			             	|
+			             	(day[s]?|d)
+			             	|
+			             	(b|[kMGTPEZY]?B)
+			             	|
+			             	(([KMGTPEZY]i?)B?)
+			             	|
+			             	([kmgtpezy])
+			             )?
+			             [^a-zA-Z0-9]
 			           )</string>
 			<key>name</key>
 			<string>constant.numeric.hocon</string>
