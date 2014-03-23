@@ -1,0 +1,95 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: HOCON
+scopeName: source.hocon
+fileTypes: [conf]
+uuid: 84F45210-A70B-11E3-A5E2-0800200C9A66
+
+patterns:
+  - include: '#duration-long'
+  - include: '#bytesize-long'
+  - include: '#duration-short'
+  - include: '#bytesize-short'
+  - include: '#variables'
+
+  - include: '#constant'
+  - include: '#string'
+  - include: '#array'
+  - include: '#comments'
+  - include: '#keywords'
+  - include: '#number'
+
+repository:
+  array:
+    name: meta.structure.array.hocon
+    begin: \[
+    beginCaptures:
+      '0': {name: punctuation.definition.array.begin.hocon}
+    end: \]
+    endCaptures:
+      '0': {name: punctuation.definition.array.end.hocon}
+    patterns:
+    - include: '#value'
+    - name: punctuation.separator.array.hocon
+      match: ','
+    - name: invalid.illegal.expected-array-separator.hocon
+      match: '[^\s\]]'
+
+  bytesize-long:
+    comment: handles byte-based units (long version)
+    name: constant.numeric.byte.long.hocon
+    match: \d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)[^a-zA-Z\w]
+
+  bytesize-short:
+    comment: handles byte-based units (short version)
+    name: constant.numeric.byte.short.hocon
+    match: \d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))[^a-zA-Z\w]
+
+  comments:
+    patterns:
+    - name: comment.line.double-slash.hocon
+      match: (//).*$\n?
+      captures:
+        '1': {name: punctuation.definition.comment.hocon}
+    - name: comment.line.pound.hocon
+      match: (#).*$\n?
+      captures:
+        '1': {name: punctuation.definition.comment.hocon}
+
+  constant:
+    name: constant.language.hocon
+    match: '[^-]\b(?:true|false|null|on|off|yes|no)\b[^-]'
+
+  duration-long:
+    comment: handles durations (long version)
+    name: constant.numeric.duration.long.hocon
+    match: \d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?[^a-zA-Z\w]
+
+  duration-short:
+    comment: handles durations (short version)
+    name: constant.numeric.duration.short.hocon
+    match: (\d+)(d|h|ns|ms|us|s)
+
+  keywords:
+    patterns:
+    - name: keyword.other.source.hocon
+      match: \b(include)\b
+
+  number:
+    comment: handles integer and decimal numbers
+    name: constant.numeric.zzz.simple.numbers.hocon
+    match: '[^a-zA-Z]\-?\d+(\.\d+)?([eE]\d+)?[^a-zA-Z\w]'
+
+  string:
+    name: string.quoted.double.hocon
+    begin: '"'
+    end: '"'
+    patterns:
+    - name: constant.character.escape.hocon
+      match: (\\(?:["\\/bfnrt]|u[0-9a-fA-F]{4}))
+    - name: invalid.illegal.unrecognized-string-escape.hocon
+      match: \\.
+
+  variables:
+    comment: variable references
+    name: storage.type.source.hocon
+    match: \$\{[^\}]*\}
