@@ -37,12 +37,12 @@ repository:
   bytesize-long:
     comment: handles byte-based units (long version)
     name: constant.numeric.byte.long.hocon
-    match: \d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)[^a-zA-Z\w]
+    match: \b\d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)\b
 
   bytesize-short:
     comment: handles byte-based units (short version)
     name: constant.numeric.byte.short.hocon
-    match: \d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))[^a-zA-Z\w]
+    match: \b\d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))\b
 
   comments:
     patterns:
@@ -62,12 +62,12 @@ repository:
   duration-long:
     comment: handles durations (long version)
     name: constant.numeric.duration.long.hocon
-    match: \d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?[^a-zA-Z\w]
+    match: \b\d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?\b
 
   duration-short:
     comment: handles durations (short version)
     name: constant.numeric.duration.short.hocon
-    match: (\d+)(d|h|ns|ms|us|s)
+    match: \b(\d+)(d|h|ns|ms|us|s)\b
 
   keywords:
     patterns:
@@ -77,7 +77,7 @@ repository:
   number:
     comment: handles integer and decimal numbers
     name: constant.numeric.zzz.simple.numbers.hocon
-    match: '[^a-zA-Z]\-?\d+(\.\d+)?([eE]\d+)?[^a-zA-Z\w]'
+    match: \b\-?\d+(\.\d+)?([eE]\d+)?\b
 
   string:
     name: string.quoted.double.hocon

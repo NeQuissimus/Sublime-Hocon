@@ -106,7 +106,7 @@
 			<key>comment</key>
 			<string>handles byte-based units (long version)</string>
 			<key>match</key>
-			<string>\d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)[^a-zA-Z\w]</string>
+			<string>\b\d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.byte.long.hocon</string>
 		</dict>
@@ -115,7 +115,7 @@
 			<key>comment</key>
 			<string>handles byte-based units (short version)</string>
 			<key>match</key>
-			<string>\d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))[^a-zA-Z\w]</string>
+			<string>\b\d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))\b</string>
 			<key>name</key>
 			<string>constant.numeric.byte.short.hocon</string>
 		</dict>
@@ -165,7 +165,7 @@
 			<key>comment</key>
 			<string>handles durations (long version)</string>
 			<key>match</key>
-			<string>\d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?[^a-zA-Z\w]</string>
+			<string>\b\d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?\b</string>
 			<key>name</key>
 			<string>constant.numeric.duration.long.hocon</string>
 		</dict>
@@ -174,7 +174,7 @@
 			<key>comment</key>
 			<string>handles durations (short version)</string>
 			<key>match</key>
-			<string>(\d+)(d|h|ns|ms|us|s)</string>
+			<string>\b(\d+)(d|h|ns|ms|us|s)\b</string>
 			<key>name</key>
 			<string>constant.numeric.duration.short.hocon</string>
 		</dict>
@@ -195,7 +195,7 @@
 			<key>comment</key>
 			<string>handles integer and decimal numbers</string>
 			<key>match</key>
-			<string>[^a-zA-Z]\-?\d+(\.\d+)?([eE]\d+)?[^a-zA-Z\w]</string>
+			<string>\b\-?\d+(\.\d+)?([eE]\d+)?\b</string>
 			<key>name</key>
 			<string>constant.numeric.zzz.simple.numbers.hocon</string>
 		</dict>
