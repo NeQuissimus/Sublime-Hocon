@@ -72,7 +72,7 @@ repository:
   keywords:
     patterns:
     - name: keyword.other.source.hocon
-      match: \b(include)\b
+      match: \b(include|url|file|classpath)\b
 
   number:
     comment: handles integer and decimal numbers
