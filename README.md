@@ -18,5 +18,5 @@ HOCON syntax highlighting for Sublime Text
 - String literals (`"foo bar"`)
 - Durations (`10s`, `10ms`, `10ns`, `10m`)
 - Variables (`${foo.var}`)
-- Keywords (`include`)
+- Keywords (`include`, `url`, `classpath`, `file`)
 - Byte-based sizes (`12KiB`, `4zebobytes`)
