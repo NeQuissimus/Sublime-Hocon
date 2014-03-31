@@ -13,27 +13,11 @@ patterns:
 
   - include: '#constant'
   - include: '#string'
-  - include: '#array'
   - include: '#comments'
   - include: '#keywords'
   - include: '#number'
 
 repository:
-  array:
-    name: meta.structure.array.hocon
-    begin: \[
-    beginCaptures:
-      '0': {name: punctuation.definition.array.begin.hocon}
-    end: \]
-    endCaptures:
-      '0': {name: punctuation.definition.array.end.hocon}
-    patterns:
-    - include: '#value'
-    - name: punctuation.separator.array.hocon
-      match: ','
-    - name: invalid.illegal.expected-array-separator.hocon
-      match: '[^\s\]]'
-
   bytesize-long:
     comment: handles byte-based units (long version)
     name: constant.numeric.byte.long.hocon
