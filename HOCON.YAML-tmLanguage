@@ -16,6 +16,7 @@ patterns:
   - include: '#comments'
   - include: '#keywords'
   - include: '#number'
+  - include: '#ustring'
 
 repository:
   bytesize-long:
@@ -61,7 +62,12 @@ repository:
   number:
     comment: handles integer and decimal numbers
     name: constant.numeric.zzz.simple.numbers.hocon
-    match: \b\-?\d+(\.\d+)?([eE]\d+)?\b
+    match: (\b\-?\d+(\.\d+)?([eE]\d+)?\b)
+
+  ustring:
+    comment: unquoted strings
+    name: string.other.zzz.unquoted.hocon
+    match: ([^=\{\}\[\]][^0-9=\{\}\[\]][^=\{\}\[\]]*)$
 
   string:
     name: string.quoted.double.hocon
