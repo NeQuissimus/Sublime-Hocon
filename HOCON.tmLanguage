@@ -50,6 +50,10 @@
 			<key>include</key>
 			<string>#number</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#ustring</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -147,7 +151,7 @@
 			<key>comment</key>
 			<string>handles integer and decimal numbers</string>
 			<key>match</key>
-			<string>\b\-?\d+(\.\d+)?([eE]\d+)?\b</string>
+			<string>(\b\-?\d+(\.\d+)?([eE]\d+)?\b)</string>
 			<key>name</key>
 			<string>constant.numeric.zzz.simple.numbers.hocon</string>
 		</dict>
@@ -174,6 +178,15 @@
 					<string>invalid.illegal.unrecognized-string-escape.hocon</string>
 				</dict>
 			</array>
+		</dict>
+		<key>ustring</key>
+		<dict>
+			<key>comment</key>
+			<string>unquoted strings</string>
+			<key>match</key>
+			<string>([^=\{\}\[\]][^0-9=\{\}\[\]][^=\{\}\[\]]*)$</string>
+			<key>name</key>
+			<string>string.other.zzz.unquoted.hocon</string>
 		</dict>
 		<key>variables</key>
 		<dict>
