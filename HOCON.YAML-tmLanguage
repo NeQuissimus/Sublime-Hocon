@@ -67,7 +67,7 @@ repository:
   ustring:
     comment: unquoted strings
     name: string.other.zzz.unquoted.hocon
-    match: ([^=\{\}\[\]][^0-9=\{\}\[\]][^=\{\}\[\]]*)$
+    match: ([^=\{\}\[\]\s][^0-9=\{\}\[\]][^=\{\}\[\]\s]*)$
 
   string:
     name: string.quoted.double.hocon

@@ -184,7 +184,7 @@
 			<key>comment</key>
 			<string>unquoted strings</string>
 			<key>match</key>
-			<string>([^=\{\}\[\]][^0-9=\{\}\[\]][^=\{\}\[\]]*)$</string>
+			<string>([^=\{\}\[\]\s][^0-9=\{\}\[\]][^=\{\}\[\]\s]*)$</string>
 			<key>name</key>
 			<string>string.other.zzz.unquoted.hocon</string>
 		</dict>
