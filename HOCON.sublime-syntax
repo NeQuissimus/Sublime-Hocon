@@ -1,0 +1,89 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: HOCON
+file_extensions:
+  - conf
+scope: source.hocon
+contexts:
+  main:
+    - include: duration-long
+    - include: bytesize-long
+    - include: duration-short
+    - include: bytesize-short
+    - include: variables
+
+    - include: constant
+    - include: string
+    - include: comments
+    - include: keywords
+    - include: number
+    - include: ustring
+
+  bytesize-long:
+    - match: \b\d+((kilo|mega|giga|tera|peta|exa|zetta|yotta|kibi|mebi|gibi|tebi|pebi|exbi|zebo|yobi)?byte[s]?)\b
+      comment: handles byte-based units (long version)
+      scope: constant.numeric.byte.long.hocon
+
+  bytesize-short:
+    - match: \b\d+(([kMGTPEZY]B)|([KMGTPEZY]i[B]?)|([kmgtpezybB]))\b
+      comment: handles byte-based units (short version)
+      scope: constant.numeric.byte.short.hocon
+
+  comments:
+    - match: (//).*$\n?
+      scope: comment.line.double-slash.hocon
+      captures:
+        '1': punctuation.definition.comment.hocon
+    - match: (#).*$\n?
+      scope: comment.line.pound.hocon
+      captures:
+        '1': punctuation.definition.comment.hocon
+
+  constant:
+    - match: '[^-]\b(?:true|false|null|on|off|yes|no)\b[^-]'
+      scope: constant.language.hocon
+
+  duration-long:
+    - match: \b\d+(day|hour|minute|millisecond|microsecond|nanosecond|second)[s]?\b
+      comment: handles durations (long version)
+      scope: constant.numeric.duration.long.hocon
+
+  duration-short:
+    - match: \b(\d+)(d|h|ns|ms|us|s)\b
+      comment: handles durations (short version)
+      scope: constant.numeric.duration.short.hocon
+
+  keywords:
+    - match: \b(include|url|file|classpath)\b
+      scope: keyword.other.source.hocon
+
+  number:
+    - match: (\b\-?\d+(\.\d+)?([eE]\d+)?\b)
+      comment: handles integer and decimal numbers
+      scope: constant.numeric.hocon
+
+  ustring:
+    - match: ([^=\{\}\[\]\s][^0-9=\{\}\[\]][^=\{\}\[\]\s]*)$
+      comment: unquoted strings
+      scope: string.other.zzz.unquoted.hocon
+
+  string:
+    - match: '"'
+      scope: punctuation.definition.string.begin.hocon
+      push: double_quoted_string
+
+  double_quoted_string:
+    - meta_scope: string.quoted.double.hocon
+    - match: (\\(?:["\\/bfnrt]|u[0-9a-fA-F]{4}))
+      scope: constant.character.escape.hocon
+    - match: '\\.'
+      scope: invalid.illegal.unrecognized-string-escape.hocon
+    - match: '"'
+      scope: punctuation.definition.string.end.hocon
+      pop: true
+
+  variables:
+    - match: \$\{[^\}]*\}
+      comment: variable references
+      scope: storage.type.source.hocon
